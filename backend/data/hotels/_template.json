@@ -1,0 +1,101 @@
+{
+  "slug": "sample-template",
+  "name": "Template Hotel Name",
+  "tagline": "Comfortable living in peaceful surroundings",
+  "description": "A spacious and modern property providing premium hospitality services, designed for relaxing holidays and business retreats.",
+  "businessType": "hotel",
+  "address": {
+    "street": "123 Peaceful Lane",
+    "area": "Green Park",
+    "city": "Sample City",
+    "state": "Sample State",
+    "pincode": "750001",
+    "country": "India"
+  },
+  "geo": {
+    "lat": null,
+    "lng": null
+  },
+  "contact": {
+    "phone": "TODO",
+    "whatsapp": "TODO",
+    "email": "TODO"
+  },
+  "checkIn": "12:00 PM",
+  "checkOut": "11:00 AM",
+  "startingPrice": {
+    "amount": null,
+    "currency": "INR",
+    "note": "per night plus taxes"
+  },
+  "rooms": [
+    {
+      "id": "deluxe-room",
+      "name": "Deluxe Room",
+      "description": "Bright room with king-size bedding and city skyline views.",
+      "bed": "1 King Bed",
+      "sizeSqFt": null,
+      "maxGuests": 2,
+      "amenities": [
+        "Air Conditioning",
+        "Free Wi-Fi",
+        "Ensuite Bathroom",
+        "Smart TV"
+      ],
+      "pricePerNight": null,
+      "images": [
+        "/hotels/sample-template/room-1.jpg"
+      ]
+    }
+  ],
+  "amenities": [
+    "High-speed Wi-Fi",
+    "Air Conditioning",
+    "Power Backup",
+    "Daily Housekeeping",
+    "Parking"
+  ],
+  "gallery": [
+    {
+      "src": "/hotels/sample-template/hero.jpg",
+      "alt": "Hotel building facade",
+      "category": "Exterior"
+    }
+  ],
+  "nearby": [
+    {
+      "name": "City Center Railway Station",
+      "distance": "10 min",
+      "mode": "drive"
+    }
+  ],
+  "houseRules": [
+    "Check-in from 12:00 PM",
+    "Check-out by 11:00 AM",
+    "Valid government ID required upon check-in",
+    "No smoking inside guest rooms"
+  ],
+  "faqs": [
+    {
+      "question": "What are the standard check-in and check-out times?",
+      "answer": "Check-in begins at 12:00 PM and check-out is by 11:00 AM."
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Priya Sharma",
+      "text": "Quiet and comfortable stay. Courteous staff and very clean rooms.",
+      "source": "Google",
+      "rating": 5
+    }
+  ],
+  "googleBusinessUrl": "TODO",
+  "social": {
+    "instagram": "TODO",
+    "facebook": "TODO"
+  },
+  "theme": {
+    "primary": "#2D3748",
+    "accent": "#4FD1C5"
+  }
+}

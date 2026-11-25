@@ -1,0 +1,185 @@
+{
+  "slug": "sample-hotel",
+  "name": "Hotel Pinecrest Heritage",
+  "tagline": "Colonial Elegance Surrounded by Whispering Woods",
+  "description": "Nestled in the tranquil hills of invented Pinevalley, Hotel Pinecrest Heritage delivers timeless architecture, warm hill-station hospitality, and serene valley panoramas. Built with handcrafted stone and cedar woodwork, this retreat offers peaceful forest strolls, wholesome farm-to-table cuisine, and modern conveniences for travelers seeking rejuvenating getaways.",
+  "businessType": "hotel",
+  "address": {
+    "street": "14 Observatory Ridge",
+    "area": "Upper Mall",
+    "city": "Pinevalley",
+    "state": "Himachal Hills",
+    "pincode": "171005",
+    "country": "India"
+  },
+  "geo": {
+    "lat": 31.1048,
+    "lng": 77.1734
+  },
+  "contact": {
+    "phone": "TODO",
+    "whatsapp": "TODO",
+    "email": "TODO"
+  },
+  "checkIn": "01:00 PM",
+  "checkOut": "11:00 AM",
+  "startingPrice": {
+    "amount": 4200,
+    "currency": "INR",
+    "note": "per night excluding taxes"
+  },
+  "rooms": [
+    {
+      "id": "heritage-classic",
+      "name": "Heritage Classic Room",
+      "description": "Charming colonial-style guest room with polished timber flooring, warm lighting, and garden views.",
+      "bed": "1 Queen Bed",
+      "sizeSqFt": 310,
+      "maxGuests": 2,
+      "amenities": [
+        "Mountain View",
+        "Electric Kettle",
+        "Radiator Heater",
+        "Free Wi-Fi",
+        "Rain Shower"
+      ],
+      "pricePerNight": 4200,
+      "images": [
+        "/hotels/sample-hotel/room-classic-1.jpg",
+        "/hotels/sample-hotel/room-classic-2.jpg"
+      ]
+    },
+    {
+      "id": "valley-view-deluxe",
+      "name": "Valley View Deluxe",
+      "description": "Spacious premium room opening into a private balcony that captures dramatic morning sunrises over the cedar valley.",
+      "bed": "1 King Bed",
+      "sizeSqFt": 420,
+      "maxGuests": 3,
+      "amenities": [
+        "Private Balcony",
+        "Fireplace",
+        "Mini Bar Fridge",
+        "Smart TV",
+        "Bathrobes"
+      ],
+      "pricePerNight": 6500,
+      "images": [
+        "/hotels/sample-hotel/room-deluxe-1.jpg",
+        "/hotels/sample-hotel/room-deluxe-2.jpg"
+      ]
+    },
+    {
+      "id": "presidential-suite",
+      "name": "The Viceroy Suite",
+      "description": "Luxurious two-room master suite featuring antique furniture, dedicated lounge area, and panoramic mountain vistas.",
+      "bed": "1 Four-Poster King Bed",
+      "sizeSqFt": 680,
+      "maxGuests": 4,
+      "amenities": [
+        "Separate Living Room",
+        "Soaking Tub",
+        "Personal Butler Service",
+        "Espresso Machine",
+        "Walk-in Closet"
+      ],
+      "pricePerNight": 11500,
+      "images": [
+        "/hotels/sample-hotel/room-suite-1.jpg",
+        "/hotels/sample-hotel/room-suite-2.jpg"
+      ]
+    }
+  ],
+  "amenities": [
+    "High-speed Wi-Fi",
+    "All-day Heritage Dining Room",
+    "Bonfire Courtyard",
+    "Complimentary Heated Tea Lounge",
+    "Secure Onsite Parking",
+    "24-Hour Front Desk",
+    "Board Games & Library Corner"
+  ],
+  "gallery": [
+    {
+      "src": "/hotels/sample-hotel/exterior-facade.jpg",
+      "alt": "Front elevation of Hotel Pinecrest Heritage under twilight",
+      "category": "Exterior"
+    },
+    {
+      "src": "/hotels/sample-hotel/dining-hall.jpg",
+      "alt": "Warm timber-paneled heritage restaurant",
+      "category": "Dining"
+    },
+    {
+      "src": "/hotels/sample-hotel/bonfire-lawn.jpg",
+      "alt": "Evening bonfire set amidst pine trees",
+      "category": "Outdoor"
+    },
+    {
+      "src": "/hotels/sample-hotel/lounge-fireplace.jpg",
+      "alt": "Cozy hearth and armchairs in the guest lounge",
+      "category": "Interior"
+    }
+  ],
+  "nearby": [
+    {
+      "name": "Pinevalley Forest Trailhead",
+      "distance": "5 min",
+      "mode": "walk"
+    },
+    {
+      "name": "Old Clocktower Market",
+      "distance": "12 min",
+      "mode": "drive"
+    },
+    {
+      "name": "Whispering Falls Viewpoint",
+      "distance": "20 min",
+      "mode": "drive"
+    }
+  ],
+  "houseRules": [
+    "Check-in: 01:00 PM | Check-out: 11:00 AM",
+    "Government approved photo ID required for every adult guest",
+    "Quiet hours observed between 10:30 PM and 07:00 AM",
+    "Smoking strictly prohibited within interior rooms and corridors",
+    "Outside alcohol is not allowed in public lounge areas"
+  ],
+  "faqs": [
+    {
+      "question": "Is vehicle parking available at the property?",
+      "answer": "Yes, complimentary private parking is available on premises for resident guests."
+    },
+    {
+      "question": "Can extra beds or cribs be accommodated?",
+      "answer": "Rollaway beds and cribs can be accommodated in Deluxe Rooms and the Viceroy Suite upon request."
+    },
+    {
+      "question": "Are rooms heated during winter?",
+      "answer": "All rooms feature modern radiator heating systems and electric blankets during colder months."
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Ananya Sen",
+      "text": "The vintage architecture and cedar wood fragrance make this place enchanting. Breakfast on the veranda was unforgettable.",
+      "source": "TripAdvisor",
+      "rating": 5
+    },
+    {
+      "author": "Vikramaditya Roy",
+      "text": "Peaceful ambience, warm staff, and very well-maintained heritage rooms. Ideal getaway away from crowded hill stations.",
+      "source": "Google",
+      "rating": 4.8
+    }
+  ],
+  "googleBusinessUrl": "TODO",
+  "social": {
+    "instagram": "TODO",
+    "facebook": "TODO"
+  },
+  "theme": {
+    "primary": "#1B3B2B",
+    "accent": "#C99753"
+  }
+}

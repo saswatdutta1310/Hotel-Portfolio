@@ -1,0 +1,148 @@
+{
+  "slug": "sample-guesthouse",
+  "name": "Riverstone Retreat Guest House",
+  "tagline": "Tranquil Riverside Comfort and Local Warmth",
+  "description": "Overlooking the pebble-lined banks of the clear Shanti River, Riverstone Retreat Guest House provides a calm, family-run escape from bustling city routines. Enjoy organic garden produce, home-cooked regional specialties, and bird-watching decks under canopy trees in an invented peaceful sanctuary.",
+  "businessType": "hotel",
+  "address": {
+    "street": "7 Riverside Causeway",
+    "area": "Riverbank Woods",
+    "city": "Shantinagar",
+    "state": "Kalinga Green",
+    "pincode": "752010",
+    "country": "India"
+  },
+  "geo": {
+    "lat": 19.8512,
+    "lng": 85.8741
+  },
+  "contact": {
+    "phone": "TODO",
+    "whatsapp": "TODO",
+    "email": "TODO"
+  },
+  "checkIn": "12:00 PM",
+  "checkOut": "10:30 AM",
+  "startingPrice": {
+    "amount": 2100,
+    "currency": "INR",
+    "note": "per night including breakfast"
+  },
+  "rooms": [
+    {
+      "id": "garden-cottage-room",
+      "name": "Garden Cottage Room",
+      "description": "Cozy ground-floor bedroom with veranda access facing landscaped herbal and flower gardens.",
+      "bed": "1 Queen Bed",
+      "sizeSqFt": 250,
+      "maxGuests": 2,
+      "amenities": [
+        "Garden Patio",
+        "Ceiling Fan & AC",
+        "Hot Water Geyser",
+        "Free Wi-Fi"
+      ],
+      "pricePerNight": 2100,
+      "images": [
+        "/hotels/sample-guesthouse/cottage-1.jpg",
+        "/hotels/sample-guesthouse/cottage-2.jpg"
+      ]
+    },
+    {
+      "id": "riverside-family-room",
+      "name": "Riverside Family Room",
+      "description": "Spacious family accommodation featuring wide windows facing the flowing river waters and shaded mango trees.",
+      "bed": "2 Double Beds",
+      "sizeSqFt": 380,
+      "maxGuests": 4,
+      "amenities": [
+        "River Deck Access",
+        "Dining Table",
+        "Tea/Coffee Maker",
+        "Air Conditioning",
+        "Attached Modern Bath"
+      ],
+      "pricePerNight": 3600,
+      "images": [
+        "/hotels/sample-guesthouse/family-1.jpg",
+        "/hotels/sample-guesthouse/family-2.jpg"
+      ]
+    }
+  ],
+  "amenities": [
+    "Complimentary Farm Breakfast",
+    "Riverside Observation Deck",
+    "High-speed Wi-Fi",
+    "Caretaker Assistance",
+    "Free Onsite Parking",
+    "Bicycle Rentals"
+  ],
+  "gallery": [
+    {
+      "src": "/hotels/sample-guesthouse/courtyard.jpg",
+      "alt": "Shaded stone courtyard with flowering bougainvillea",
+      "category": "Exterior"
+    },
+    {
+      "src": "/hotels/sample-guesthouse/deck-view.jpg",
+      "alt": "Wooden river deck overlooking pebble river bank",
+      "category": "Outdoors"
+    },
+    {
+      "src": "/hotels/sample-guesthouse/dining-veranda.jpg",
+      "alt": "Open-air veranda where fresh breakfast is served",
+      "category": "Dining"
+    }
+  ],
+  "nearby": [
+    {
+      "name": "Shanti River Bamboo Bridge",
+      "distance": "3 min",
+      "mode": "walk"
+    },
+    {
+      "name": "Artisans Craft Village",
+      "distance": "15 min",
+      "mode": "drive"
+    }
+  ],
+  "houseRules": [
+    "Check-in: 12:00 PM | Check-out: 10:30 AM",
+    "Eco-sensitive zone: plastic disposal in designated bins only",
+    "Pet friendly with prior notice and confirmation",
+    "Strictly no loud amplified music on riverside decks after 09:30 PM"
+  ],
+  "faqs": [
+    {
+      "question": "Is home-cooked dinner available at the guest house?",
+      "answer": "Yes, delicious home-cooked regional thalis are prepared fresh daily upon advance notice before 04:00 PM."
+    },
+    {
+      "question": "Is the property pet friendly?",
+      "answer": "Yes, well-trained pets are welcome in Garden Cottage rooms."
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Debashish Mishra",
+      "text": "The river view and absolute quietness are therapeutic. The hosts treated us like family, and the breakfast was outstanding.",
+      "source": "Airbnb",
+      "rating": 5
+    },
+    {
+      "author": "Kavita Nair",
+      "text": "Spotless rooms, fresh morning air, and birds chirping all day. Exactly what a relaxing countryside guesthouse should be.",
+      "source": "Google",
+      "rating": 4.9
+    }
+  ],
+  "googleBusinessUrl": "TODO",
+  "social": {
+    "instagram": "TODO",
+    "facebook": "TODO"
+  },
+  "theme": {
+    "primary": "#284B63",
+    "accent": "#3C6E71"
+  }
+}
