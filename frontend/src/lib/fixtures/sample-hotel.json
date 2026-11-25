@@ -1,0 +1,119 @@
+{
+  "slug": "sample-hotel",
+  "name": "The Grand Pine Hotel",
+  "tagline": "Mountain tranquility and refined pine valley comfort",
+  "description": "Nestled high in the misty pine ridge, The Grand Pine Hotel offers serene mountain escapes with all-weather heating, locally sourced dining, and unhurried walking trails.",
+  "businessType": "hotel",
+  "heroImage": "/hotels/sample-hotel/hero.svg",
+  "address": {
+    "street": "12 Pine Ridge Road",
+    "area": "Highland Valley",
+    "city": "Shimla",
+    "state": "Himachal Pradesh",
+    "pincode": "171001",
+    "country": "India"
+  },
+  "geo": {
+    "lat": 31.1048,
+    "lng": 77.1734
+  },
+  "contact": {
+    "phone": "TODO",
+    "whatsapp": "TODO",
+    "email": "TODO"
+  },
+  "checkIn": "02:00 PM",
+  "checkOut": "11:00 AM",
+  "startingPrice": {
+    "amount": 4200,
+    "currency": "INR",
+    "note": "per night plus taxes"
+  },
+  "rooms": [
+    {
+      "id": "deluxe-pine-view",
+      "name": "Deluxe Pine View",
+      "description": "Spacious room overlooking the valley with king bed and balcony.",
+      "bed": "1 King Bed",
+      "sizeSqFt": 340,
+      "maxGuests": 2,
+      "amenities": ["Wi-Fi", "Valley View Balcony", "Tea/Coffee Maker", "Heater"],
+      "pricePerNight": 4200,
+      "images": ["/hotels/sample-hotel/room-deluxe.svg"]
+    },
+    {
+      "id": "valley-suite",
+      "name": "Valley Family Suite",
+      "description": "Two connected suites ideal for families traveling together.",
+      "bed": "2 King Beds",
+      "sizeSqFt": 580,
+      "maxGuests": 4,
+      "amenities": ["Wi-Fi", "Separate Lounge", "Mini Bar", "Mountain View"],
+      "pricePerNight": 7500,
+      "images": ["/hotels/sample-hotel/room-suite.svg"]
+    }
+  ],
+  "amenities": [
+    "High-speed Wi-Fi",
+    "Valley-view Restaurant",
+    "Free Parking",
+    "24-hour Front Desk",
+    "Power Backup"
+  ],
+  "gallery": [
+    {
+      "src": "/hotels/sample-hotel/hero.svg",
+      "alt": "The Grand Pine Hotel facade in morning mist",
+      "category": "Exterior"
+    },
+    {
+      "src": "/hotels/sample-hotel/gallery-lounge.svg",
+      "alt": "Warm cozy fireplace lounge",
+      "category": "Lounge"
+    }
+  ],
+  "nearby": [
+    {
+      "name": "The Ridge Mall Road",
+      "distance": "12 min",
+      "mode": "walk"
+    },
+    {
+      "name": "Jakhu Temple Trailhead",
+      "distance": "20 min",
+      "mode": "drive"
+    }
+  ],
+  "houseRules": [
+    "Check-in with valid government photo ID",
+    "Non-smoking inside all rooms",
+    "Quiet hours from 10:00 PM to 7:00 AM"
+  ],
+  "faqs": [
+    {
+      "question": "Is parking available on site?",
+      "answer": "Yes, complimentary on-site private parking is available for all registered guests."
+    },
+    {
+      "question": "Do you provide heaters in winters?",
+      "answer": "Yes, all rooms are equipped with heating facilities during the winter season."
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Ananya Sharma",
+      "text": "Splendid views of the cedar hills and incredibly courteous hospitality.",
+      "source": "Google Review",
+      "rating": 5
+    }
+  ],
+  "googleBusinessUrl": "TODO",
+  "social": {
+    "instagram": "TODO",
+    "facebook": "TODO"
+  },
+  "theme": {
+    "primary": "#1b4332",
+    "accent": "#40916c"
+  }
+}

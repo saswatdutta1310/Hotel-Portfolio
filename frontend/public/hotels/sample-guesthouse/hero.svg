@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="guesthouse-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3a5a40" />
+      <stop offset="100%" stop-color="#588157" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#guesthouse-sky)" />
+  <path d="M0,600 Q300,520 600,600 T1200,600 L1200,800 L0,800 Z" fill="#344e41" />
+  <rect x="350" y="420" width="500" height="240" rx="6" fill="#f8fafc" />
+  <polygon points="320,420 600,280 880,420" fill="#a3b18a" />
+  <text x="600" y="220" font-family="sans-serif" font-size="36" font-weight="bold" fill="#ffffff" text-anchor="middle">Riverstone Retreat Guest House</text>
+  <text x="600" y="260" font-family="sans-serif" font-size="22" fill="#dad7cd" text-anchor="middle">Manali, Himachal Pradesh</text>
+</svg>

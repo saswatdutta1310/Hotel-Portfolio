@@ -1,0 +1,104 @@
+{
+  "slug": "sample-guesthouse",
+  "name": "Riverstone Retreat Guest House",
+  "tagline": "Quiet riverside homestay with home-cooked organic meals",
+  "description": "A charming riverstone guesthouse situated steps away from the gently flowing mountain river. Enjoy peaceful morning tea on the stone veranda and fresh mountain air.",
+  "businessType": "hotel",
+  "heroImage": "/hotels/sample-guesthouse/hero.svg",
+  "address": {
+    "street": "44 Riverside Path",
+    "area": "Old Orchard",
+    "city": "Manali",
+    "state": "Himachal Pradesh",
+    "pincode": "175131",
+    "country": "India"
+  },
+  "geo": {
+    "lat": 32.2396,
+    "lng": 77.1887
+  },
+  "contact": {
+    "phone": "TODO",
+    "whatsapp": "TODO",
+    "email": "TODO"
+  },
+  "checkIn": "01:00 PM",
+  "checkOut": "10:30 AM",
+  "startingPrice": {
+    "amount": 2100,
+    "currency": "INR",
+    "note": "per night includes home breakfast"
+  },
+  "rooms": [
+    {
+      "id": "riverside-cottage-room",
+      "name": "Riverside Cottage Room",
+      "description": "Cozy wooden cottage bedroom facing the orchard and river sounds.",
+      "bed": "1 Queen Bed",
+      "sizeSqFt": 260,
+      "maxGuests": 2,
+      "amenities": ["Wi-Fi", "Balcony", "Hot Water", "Garden View"],
+      "pricePerNight": 2100,
+      "images": ["/hotels/sample-guesthouse/room-cottage.svg"]
+    }
+  ],
+  "amenities": [
+    "Garden Lawn",
+    "Home-cooked Meals",
+    "High-speed Wi-Fi",
+    "Bonfire on Request",
+    "Pet Friendly"
+  ],
+  "gallery": [
+    {
+      "src": "/hotels/sample-guesthouse/hero.svg",
+      "alt": "Riverstone Retreat stone cottage facade",
+      "category": "Exterior"
+    },
+    {
+      "src": "/hotels/sample-guesthouse/gallery-garden.svg",
+      "alt": "Apple orchard and blooming garden lawn",
+      "category": "Garden"
+    }
+  ],
+  "nearby": [
+    {
+      "name": "Beas River Bank",
+      "distance": "3 min",
+      "mode": "walk"
+    },
+    {
+      "name": "Old Village Market",
+      "distance": "15 min",
+      "mode": "walk"
+    }
+  ],
+  "houseRules": [
+    "Government ID required at check-in",
+    "Pets welcome with prior notice",
+    "Quiet hours after 10 PM"
+  ],
+  "faqs": [
+    {
+      "question": "Are home meals served?",
+      "answer": "Yes, freshly prepared breakfast and dinner are available made from local produce."
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Rohit Verma",
+      "text": "Peaceful ambience, warm owners, and the river murmur was therapeutic.",
+      "source": "TripAdvisor",
+      "rating": 5
+    }
+  ],
+  "googleBusinessUrl": "TODO",
+  "social": {
+    "instagram": "TODO",
+    "facebook": "TODO"
+  },
+  "theme": {
+    "primary": "#3a5a40",
+    "accent": "#588157"
+  }
+}
