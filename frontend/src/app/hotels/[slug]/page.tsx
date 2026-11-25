@@ -3,6 +3,12 @@ import { notFound } from "next/navigation";
 import { getHotel, getHotels } from "@/lib/api";
 import { Hero } from "@/components/hotel/Hero";
 import { QuickFacts } from "@/components/hotel/QuickFacts";
+import { Rooms } from "@/components/hotel/Rooms";
+import { Amenities } from "@/components/hotel/Amenities";
+import { Rules } from "@/components/hotel/Rules";
+import { FaqSection } from "@/components/hotel/Faq";
+import { Gallery } from "@/components/hotel/Gallery";
+import { SectionNav } from "@/components/hotel/SectionNav";
 
 interface PageProps {
   params: Promise<{
@@ -41,11 +47,63 @@ export default async function HotelDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  // Construct section navigation dynamically based on present data
+  const navItems: Array<{ id: string; label: string }> = [
+    { id: "overview", label: "Overview" },
+  ];
+
+  if (hotel.rooms && hotel.rooms.length > 0) {
+    navItems.push({ id: "rooms", label: "Rooms" });
+  }
+
+  if (hotel.amenities && hotel.amenities.length > 0) {
+    navItems.push({ id: "amenities", label: "Amenities" });
+  }
+
+  if (
+    Boolean(hotel.checkIn || hotel.checkOut) ||
+    (hotel.houseRules && hotel.houseRules.length > 0)
+  ) {
+    navItems.push({ id: "rules", label: "Policies & Rules" });
+  }
+
+  if (hotel.faqs && hotel.faqs.length > 0) {
+    navItems.push({ id: "faq", label: "FAQs" });
+  }
+
+  if (hotel.gallery && hotel.gallery.length > 0) {
+    navItems.push({ id: "gallery", label: "Gallery" });
+  }
+
   return (
-    <article className="pb-16">
+    <article className="pb-20">
       <Hero hotel={hotel} />
-      <div className="max-w-5xl mx-auto px-6 mt-8">
-        <QuickFacts hotel={hotel} />
+      <SectionNav items={navItems} />
+
+      <div className="max-w-5xl mx-auto px-6 mt-8 space-y-4">
+        <section id="overview" className="scroll-mt-24">
+          <QuickFacts hotel={hotel} />
+          {hotel.description && (
+            <div className="mt-6 rounded-lg border border-border bg-card p-6 shadow-xs">
+              <h2 className="text-lg font-semibold tracking-tight text-foreground mb-3">
+                About the Property
+              </h2>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                {hotel.description}
+              </p>
+            </div>
+          )}
+        </section>
+
+        <Rooms rooms={hotel.rooms} currency={hotel.startingPrice.currency} />
+        <Amenities amenities={hotel.amenities} />
+        <Rules
+          checkIn={hotel.checkIn}
+          checkOut={hotel.checkOut}
+          houseRules={hotel.houseRules}
+        />
+        <FaqSection faqs={hotel.faqs} />
+        <Gallery gallery={hotel.gallery} />
       </div>
     </article>
   );
