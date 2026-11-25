@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <rect width="800" height="600" fill="#344e41" />
+  <path d="M0,450 C300,420 500,520 800,460 L800,600 L0,600 Z" fill="#588157" />
+  <rect x="250" y="260" width="300" height="180" rx="8" fill="#dad7cd" />
+  <text x="400" y="355" font-family="sans-serif" font-size="26" font-weight="bold" fill="#344e41" text-anchor="middle">Stone Veranda &amp; Tea Deck</text>
+</svg>

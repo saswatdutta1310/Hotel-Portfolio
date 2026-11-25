@@ -58,7 +58,10 @@
     "Valley-view Restaurant",
     "Free Parking",
     "24-hour Front Desk",
-    "Power Backup"
+    "Power Backup",
+    "Mountain View Lawn",
+    "Heated Rooms",
+    "Daily Housekeeping"
   ],
   "gallery": [
     {
@@ -70,6 +73,16 @@
       "src": "/hotels/sample-hotel/gallery-lounge.svg",
       "alt": "Warm cozy fireplace lounge",
       "category": "Lounge"
+    },
+    {
+      "src": "/hotels/sample-hotel/gallery-dining.svg",
+      "alt": "Cedar dining hall and valley terrace",
+      "category": "Dining"
+    },
+    {
+      "src": "/hotels/sample-hotel/gallery-view.svg",
+      "alt": "Pine forest view and surrounding mountain ridge",
+      "category": "Surroundings"
     }
   ],
   "nearby": [
@@ -87,7 +100,8 @@
   "houseRules": [
     "Check-in with valid government photo ID",
     "Non-smoking inside all rooms",
-    "Quiet hours from 10:00 PM to 7:00 AM"
+    "Quiet hours from 10:00 PM to 7:00 AM",
+    "Outside visitors permitted in public lounge areas only"
   ],
   "faqs": [
     {
@@ -97,6 +111,10 @@
     {
       "question": "Do you provide heaters in winters?",
       "answer": "Yes, all rooms are equipped with heating facilities during the winter season."
+    },
+    {
+      "question": "What time is breakfast served?",
+      "answer": "Buffet breakfast is served in the cedar dining hall from 7:30 AM to 10:30 AM daily."
     }
   ],
   "reviews": [

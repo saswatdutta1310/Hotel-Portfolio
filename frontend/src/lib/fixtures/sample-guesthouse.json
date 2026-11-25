@@ -40,6 +40,17 @@
       "amenities": ["Wi-Fi", "Balcony", "Hot Water", "Garden View"],
       "pricePerNight": 2100,
       "images": ["/hotels/sample-guesthouse/room-cottage.svg"]
+    },
+    {
+      "id": "family-loft-suite",
+      "name": "Riverside Family Loft",
+      "description": "Spacious timber attic loft with river valley outlook.",
+      "bed": "2 Queen Beds",
+      "sizeSqFt": 450,
+      "maxGuests": 4,
+      "amenities": ["Wi-Fi", "Tea Maker", "Private Porch", "River View"],
+      "pricePerNight": null,
+      "images": ["/hotels/sample-guesthouse/room-loft.svg"]
     }
   ],
   "amenities": [
@@ -47,7 +58,9 @@
     "Home-cooked Meals",
     "High-speed Wi-Fi",
     "Bonfire on Request",
-    "Pet Friendly"
+    "Pet Friendly",
+    "Hot Water 24 Hours",
+    "Riverside Walking Access"
   ],
   "gallery": [
     {
@@ -59,6 +72,11 @@
       "src": "/hotels/sample-guesthouse/gallery-garden.svg",
       "alt": "Apple orchard and blooming garden lawn",
       "category": "Garden"
+    },
+    {
+      "src": "/hotels/sample-guesthouse/gallery-veranda.svg",
+      "alt": "Stone veranda and tea deck overlooking the river",
+      "category": "Common Area"
     }
   ],
   "nearby": [
@@ -76,12 +94,17 @@
   "houseRules": [
     "Government ID required at check-in",
     "Pets welcome with prior notice",
-    "Quiet hours after 10 PM"
+    "Quiet hours after 10 PM",
+    "Eco-friendly waste segregation requested"
   ],
   "faqs": [
     {
       "question": "Are home meals served?",
       "answer": "Yes, freshly prepared breakfast and dinner are available made from local produce."
+    },
+    {
+      "question": "Is the guesthouse pet friendly?",
+      "answer": "Yes, friendly pets are welcome on prior notice with host confirmation."
     }
   ],
   "reviews": [
