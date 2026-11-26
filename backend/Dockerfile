@@ -1,8 +1,8 @@
 # Stage 1: Build
-FROM node:20-slim AS builder
+FROM node:26-slim AS builder
 
-# Enable corepack for pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Install pnpm directly via npm (corepack removed from Node 25+)
+RUN npm install -g pnpm@latest
 
 WORKDIR /app
 
@@ -22,7 +22,7 @@ COPY scripts ./scripts
 RUN pnpm run build
 
 # Stage 2: Production Runtime
-FROM node:20-slim AS runner
+FROM node:26-slim AS runner
 
 WORKDIR /app
 

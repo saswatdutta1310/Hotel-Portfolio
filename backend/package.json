@@ -4,6 +4,9 @@
   "description": "Hotel portfolio backend API",
   "main": "dist/server.js",
   "type": "module",
+  "engines": {
+    "node": ">=26.0.0"
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "prestart": "node -e \"const { getAllHotels } = await import('./dist/services/hotel-loader.js'); getAllHotels();\"",
