@@ -1,8 +1,8 @@
 # Stage 1: Build
 FROM node:26-slim AS builder
 
-# Install pnpm directly via npm (corepack removed from Node 25+)
-RUN npm install -g pnpm@latest
+# Install pnpm directly via npm pinned to 12.18.0 (corepack removed from Node 25+)
+RUN npm install -g pnpm@12.18.0
 
 WORKDIR /app
 
