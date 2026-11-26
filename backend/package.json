@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
+    "prestart": "node -e \"const { getAllHotels } = await import('./dist/services/hotel-loader.js'); getAllHotels();\"",
     "build": "tsc",
     "start": "node dist/server.js",
     "lint": "eslint src/ tests/ scripts/",

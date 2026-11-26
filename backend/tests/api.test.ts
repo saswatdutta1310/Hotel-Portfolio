@@ -3,10 +3,18 @@ import request from "supertest";
 import { app } from "../src/app.js";
 
 describe("Backend API Endpoints", () => {
-  it("GET /health returns 200 with { status: 'ok' }", async () => {
+  it("GET /health returns 200 with status, hotelsLoaded, and uptime", async () => {
     const res = await request(app).get("/health");
     expect(res.status).toBe(200);
     expect(res.body.status).toBe("ok");
+    expect(typeof res.body.hotelsLoaded).toBe("number");
+    expect(res.body.hotelsLoaded).toBeGreaterThanOrEqual(2);
+    expect(typeof res.body.uptime).toBe("number");
+    expect(res.body.uptime).toBeGreaterThanOrEqual(0);
+    // Never expose sensitive fields
+    expect(res.body).not.toHaveProperty("env");
+    expect(res.body).not.toHaveProperty("config");
+    expect(res.body).not.toHaveProperty("secret");
   });
 
   it("GET /api/hotels returns 200 with { hotels: HotelSummary[] }", async () => {
