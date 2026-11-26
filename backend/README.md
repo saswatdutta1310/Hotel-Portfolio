@@ -6,6 +6,17 @@ Node + Express + TypeScript REST API powering the hotel and guest house portfoli
 - **Strict TypeScript** with zero `any` types
 - **Zod schemas** matching the shared API contract (`docs/api-contract.md`)
 - **JSON File-backed Store** for hotel and guest house properties
+- **Enquiry Endpoint (`POST /api/enquiry`)**:
+  - Validates contact, stay dates, guest count, and hotel existence
+  - Trims strings and rejects control characters
+  - Honeypot spam defense (hidden `website` field returns 200 without sending email)
+  - Rate limiting via `express-rate-limit` (5 requests/IP/hour returning 429)
+  - Request body size limit enforced at 10kb (returning 413)
+- **Nodemailer Email Service**:
+  - Configurable modes (`EMAIL_MODE=console` or `smtp`)
+  - Full HTML escaping on all user-supplied values
+  - Header injection prevention (user input excluded from headers and subject templates)
+  - Privacy compliance: never logs personal information (names, emails, phone numbers, messages)
 - **CORS & Security** via Helmet and whitelist-based CORS
 - **Structured Error Handling** conforming to `{ "error": { "code": "...", "message": "..." } }`
 - **Automated Validation & Scaffolding** CLI scripts
@@ -37,6 +48,22 @@ pnpm install
 ```powershell
 pnpm approve-builds --all
 ```
+
+---
+
+## Environment Variables
+
+| Variable | Description | Default |
+|---|---|---|
+| `PORT` | API server port | `4000` |
+| `ALLOWED_ORIGIN` | CORS allowed frontend URL | `http://localhost:3000` |
+| `EMAIL_MODE` | Email delivery strategy: `console` or `smtp` | `console` |
+| `SMTP_HOST` | SMTP server host | `localhost` |
+| `SMTP_PORT` | SMTP port | `587` |
+| `SMTP_USER` | SMTP username | `TODO` |
+| `SMTP_PASS` | SMTP password | `TODO` |
+| `MAIL_FROM` | Sender email address | `no-reply@hotelportfolio.local` |
+| `DEFAULT_ENQUIRY_TO` | Fallback recipient when hotel contact email is `TODO` | `reservations@hotelportfolio.local` |
 
 ---
 
@@ -95,3 +122,4 @@ pnpm run new:hotel sea-breeze-resort
 | `GET` | `/health` | Healthcheck returning `{ "status": "ok" }` |
 | `GET` | `/api/hotels` | Returns `{ "hotels": HotelSummary[] }` |
 | `GET` | `/api/hotels/:slug` | Returns detailed `Hotel` object or 404 error |
+| `POST` | `/api/enquiry` | Submits enquiry email for hotel, protected by rate limiting and honeypot |
