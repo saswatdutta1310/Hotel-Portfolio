@@ -48,6 +48,7 @@ test.describe("Frontend Smoke Tests", () => {
     await expect(page.getByRole("link", { name: "Policies & Rules" })).toBeVisible();
     await expect(page.getByRole("link", { name: "FAQs" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Gallery" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Enquire" })).toBeVisible();
 
     // Rooms section
     await expect(
@@ -92,5 +93,62 @@ test.describe("Frontend Smoke Tests", () => {
     // Press Escape to close
     await page.keyboard.press("Escape");
     await expect(lightboxDialog).not.toBeVisible();
+  });
+
+  test("enquiry form validation errors and focus handling", async ({ page }) => {
+    await page.goto("/hotels/sample-hotel");
+
+    const enquiryHeading = page.getByRole("heading", {
+      name: "Send an Enquiry",
+    });
+    await expect(enquiryHeading).toBeVisible();
+
+    const submitBtn = page.getByRole("button", { name: "Submit Enquiry" });
+    await expect(submitBtn).toBeVisible();
+
+    // Submitting empty form triggers validation error
+    await submitBtn.click();
+
+    const nameInput = page.getByLabel(/Your Full Name/i);
+    await expect(nameInput).toBeFocused();
+    await expect(page.getByText("Name is required.")).toBeVisible();
+    await expect(
+      page.getByText("Please provide at least a phone number or email address.").first()
+    ).toBeVisible();
+  });
+
+  test("enquiry form success flow in mock mode", async ({ page }) => {
+    await page.goto("/hotels/sample-hotel");
+
+    // Fill valid enquiry form
+    await page.getByLabel(/Your Full Name/i).fill("Test Visitor");
+    await page.getByLabel(/Phone Number/i).fill("+91 9876543210");
+    await page.getByLabel(/Email Address/i).fill("visitor@example.com");
+    await page.getByLabel(/Special Requests or Questions/i).fill("Looking for a mountain view room.");
+
+    const submitBtn = page.getByRole("button", { name: "Submit Enquiry" });
+    await submitBtn.click();
+
+    // Verify submission success state
+    await expect(
+      page.getByRole("heading", { name: "Enquiry Sent Successfully" })
+    ).toBeVisible({ timeout: 5000 });
+    await expect(
+      page.getByText("The host has received your details and will get in touch")
+    ).toBeVisible();
+  });
+
+  test("honeypot field is off-screen and not keyboard reachable", async ({ page }) => {
+    await page.goto("/hotels/sample-hotel");
+
+    const honeypot = page.locator('input[name="website"]');
+    await expect(honeypot).toHaveAttribute("tabindex", "-1");
+
+    // Tab through elements and ensure honeypot never receives focus
+    await page.getByLabel(/Your Full Name/i).focus();
+    await page.keyboard.press("Tab");
+
+    const isHoneypotFocused = await honeypot.evaluate((el) => el === document.activeElement);
+    expect(isHoneypotFocused).toBe(false);
   });
 });
