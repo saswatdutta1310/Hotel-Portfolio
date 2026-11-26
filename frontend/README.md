@@ -30,6 +30,7 @@ Default settings in `.env.example`:
 ```env
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 API_URL=http://localhost:4000
+NEXT_PUBLIC_API_URL=http://localhost:4000
 USE_MOCK=true
 NEXT_PUBLIC_GOOGLE_MAPS_KEY=
 NEXT_PUBLIC_ANALYTICS_DOMAIN=
@@ -39,7 +40,7 @@ NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 ### 3. Switching Between Mock Data and Real Backend
 
 - **Using Mock Data (Default):**
-  Set `USE_MOCK=true` in `.env.local`. The frontend reads fictional hotel fixtures from `src/lib/fixtures/` (`sample-hotel.json` and `sample-guesthouse.json`).
+  Set `USE_MOCK=true` in `.env.local`. The frontend reads fictional hotel fixtures from `src/lib/fixtures/` (`sample-hotel.json` and `sample-guesthouse.json`). Client components like EnquiryForm simulate a short delay and success without sending network requests.
 
 - **Using the Real Backend:**
   1. Ensure the Express backend is running on `http://localhost:4000`.
@@ -47,8 +48,10 @@ NEXT_PUBLIC_TURNSTILE_SITE_KEY=
      ```env
      USE_MOCK=false
      API_URL=http://localhost:4000
+     NEXT_PUBLIC_API_URL=http://localhost:4000
      ```
-  3. Restart the Next.js server so the updated environment variable is loaded.
+  3. Client-side requests (such as the enquiry form `POST /api/enquiry`) will submit directly to `NEXT_PUBLIC_API_URL`.
+  4. Restart the Next.js server so updated environment variables are loaded.
 
 ---
 
