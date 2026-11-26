@@ -33,12 +33,43 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!hotel) {
     return {
       title: "Hotel Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
+  const heroImg =
+    hotel.heroImage ||
+    (hotel.gallery && hotel.gallery[0]?.src) ||
+    "/hotels/sample-hotel/hero.svg";
+
   return {
-    title: `${hotel.name} | ${hotel.address.city}`,
+    title: `${hotel.name} - ${hotel.address.city}, ${hotel.address.state}`,
     description: hotel.description || hotel.tagline,
+    alternates: {
+      canonical: `/hotels/${hotel.slug}`,
+    },
+    openGraph: {
+      title: `${hotel.name} | ${hotel.address.city}`,
+      description: hotel.description || hotel.tagline,
+      url: `/hotels/${hotel.slug}`,
+      images: [
+        {
+          url: heroImg,
+          width: 1200,
+          height: 800,
+          alt: `${hotel.name} view`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${hotel.name} | ${hotel.address.city}`,
+      description: hotel.description || hotel.tagline,
+      images: [heroImg],
+    },
   };
 }
 

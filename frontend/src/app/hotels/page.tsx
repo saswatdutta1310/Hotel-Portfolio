@@ -4,8 +4,33 @@ import Image from "next/image";
 import { getHotels } from "@/lib/api";
 
 export const metadata: Metadata = {
-  title: "Hotels & Guest Houses | Directory",
-  description: "Browse curated hotel and guest house portfolios",
+  title: "Hotel Directory - Explore Properties",
+  description:
+    "Browse our complete directory of boutique hotels and mountain guest houses with direct host contact information.",
+  alternates: {
+    canonical: "/hotels",
+  },
+  openGraph: {
+    title: "Hotel Directory | Hotel Portfolio",
+    description:
+      "Browse our complete directory of boutique hotels and mountain guest houses with direct host contact information.",
+    url: "/hotels",
+    images: [
+      {
+        url: "/hotels/sample-hotel/hero.svg",
+        width: 1200,
+        height: 800,
+        alt: "Hotel Directory Overview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hotel Directory | Hotel Portfolio",
+    description:
+      "Browse our complete directory of boutique hotels and mountain guest houses with direct host contact information.",
+    images: ["/hotels/sample-hotel/hero.svg"],
+  },
 };
 
 export default async function HotelsPage() {
@@ -34,6 +59,7 @@ export default async function HotelsPage() {
                 src={hotel.heroImage}
                 alt={`${hotel.name} preview`}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform group-hover:scale-105"
               />
             </div>

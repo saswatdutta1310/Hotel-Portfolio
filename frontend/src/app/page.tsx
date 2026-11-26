@@ -1,5 +1,36 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Serene Boutique Hotels & Guest Houses",
+  description:
+    "Explore curated boutique hotels and quiet guest houses. View amenities, transparent room rates, and connect directly with property owners.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Serene Boutique Hotels & Guest Houses | Hotel Portfolio",
+    description:
+      "Explore curated boutique hotels and quiet guest houses. View amenities, transparent room rates, and connect directly with property owners.",
+    url: "/",
+    images: [
+      {
+        url: "/hotels/sample-hotel/hero.svg",
+        width: 1200,
+        height: 800,
+        alt: "Hotel Portfolio - Serene Boutique Stays",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Serene Boutique Hotels & Guest Houses | Hotel Portfolio",
+    description:
+      "Explore curated boutique hotels and quiet guest houses. Connect directly with hosts without booking fees.",
+    images: ["/hotels/sample-hotel/hero.svg"],
+  },
+};
 
 export default function HomePage() {
   return (
