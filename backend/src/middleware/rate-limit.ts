@@ -10,6 +10,15 @@ export const enquiryRateLimiter = rateLimit({
   limit: 5,
   standardHeaders: "draft-7",
   legacyHeaders: false,
+  validate: false,
+  keyGenerator: (req: Request) => {
+    // Prefer X-Forwarded-For if set (e.g., in reverse proxy / test), fallback to req.ip
+    const forwarded = req.headers["x-forwarded-for"];
+    if (typeof forwarded === "string") {
+      return forwarded.split(",")[0].trim();
+    }
+    return req.ip || "127.0.0.1";
+  },
   handler: (_req: Request, res: Response) => {
     res.status(429).json({
       error: {

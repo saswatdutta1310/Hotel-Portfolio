@@ -11,13 +11,15 @@ export const app = express();
 app.use(helmet());
 app.use(corsMiddleware);
 
+// Routes with their own body parser
+app.use("/api/enquiry", enquiryRouter);
+
 // Standard JSON parser for other routes
 app.use(express.json());
 
-// Routes
+// Other routes
 app.use(healthRouter);
 app.use("/api/hotels", hotelsRouter);
-app.use("/api/enquiry", enquiryRouter);
 
 // Unknown route handling (404)
 app.use(notFoundHandler);
