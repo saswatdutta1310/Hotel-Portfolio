@@ -6,6 +6,8 @@ Node + Express + TypeScript REST API powering the hotel and guest house portfoli
 - **Strict TypeScript** with zero `any` types
 - **Zod schemas** matching the shared API contract (`docs/api-contract.md`)
 - **JSON File-backed Store** for hotel and guest house properties
+- **Reverse Proxy Ready**:
+  - `TRUST_PROXY` configuration (`app.set("trust proxy", ...)`) for accurate visitor IP resolution behind reverse proxies/CDNs.
 - **Enquiry Endpoint (`POST /api/enquiry`)**:
   - Validates contact, stay dates, guest count, and hotel existence
   - Trims strings and rejects control characters
@@ -17,7 +19,12 @@ Node + Express + TypeScript REST API powering the hotel and guest house portfoli
   - Full HTML escaping on all user-supplied values
   - Header injection prevention (user input excluded from headers and subject templates)
   - Privacy compliance: never logs personal information (names, emails, phone numbers, messages)
-- **CORS & Security** via Helmet and whitelist-based CORS
+- **CORS & Security**:
+  - Comma-separated allowed origins with fail-fast validation in production mode (forbids empty origin or wildcard `*`)
+  - Helmet security headers
+  - Safe production error responses with no internal stack trace exposure
+- **Graceful Shutdown**:
+  - Catches `SIGTERM` and `SIGINT` signals, halts new connections, finishes in-flight requests, and cleanly exits
 - **Structured Error Handling** conforming to `{ "error": { "code": "...", "message": "..." } }`
 - **Automated Validation & Scaffolding** CLI scripts
 
@@ -56,7 +63,8 @@ pnpm approve-builds --all
 | Variable | Description | Default |
 |---|---|---|
 | `PORT` | API server port | `4000` |
-| `ALLOWED_ORIGIN` | CORS allowed frontend URL | `http://localhost:3000` |
+| `ALLOWED_ORIGIN` | Comma-separated list of allowed frontend origins (in production, cannot be empty or `*`) | `http://localhost:3000` |
+| `TRUST_PROXY` | Number of upstream proxy hops (e.g. `1` behind Nginx/Render/Cloudflare, `0` direct). **Warning:** A wrong value can allow visitors to spoof their IP address. | `0` |
 | `EMAIL_MODE` | Email delivery strategy: `console` or `smtp` | `console` |
 | `SMTP_HOST` | SMTP server host | `localhost` |
 | `SMTP_PORT` | SMTP port | `587` |
