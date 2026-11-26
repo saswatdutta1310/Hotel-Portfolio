@@ -12,6 +12,12 @@ import { Gallery } from "@/components/hotel/Gallery";
 import { SectionNav } from "@/components/hotel/SectionNav";
 import { EnquiryForm } from "@/components/hotel/EnquiryForm";
 import { ContactBar } from "@/components/hotel/ContactBar";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildHotelJsonLd,
+  buildBreadcrumbJsonLd,
+  buildFaqPageJsonLd,
+} from "@/lib/seo-jsonld";
 
 interface PageProps {
   params: Promise<{
@@ -81,6 +87,16 @@ export default async function HotelDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+  // Build JSON-LD structured data objects
+  const hotelJsonLd = buildHotelJsonLd(siteUrl, hotel);
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd(siteUrl, {
+    name: hotel.name,
+    slug: hotel.slug,
+  });
+  const faqJsonLd = buildFaqPageJsonLd(hotel.faqs);
+
   // Construct section navigation dynamically based on present data
   const navItems: Array<{ id: string; label: string }> = [
     { id: "overview", label: "Overview" },
@@ -114,6 +130,10 @@ export default async function HotelDetailPage({ params }: PageProps) {
 
   return (
     <article className="pb-28 md:pb-20">
+      <JsonLd data={hotelJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
+      {faqJsonLd && <JsonLd data={faqJsonLd} />}
+
       <Hero hotel={hotel} />
       <SectionNav items={navItems} />
 
