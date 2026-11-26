@@ -52,12 +52,13 @@ export default async function HotelsPage() {
           <Link
             key={hotel.slug}
             href={`/hotels/${hotel.slug}`}
+            aria-label={`View details and rooms for ${hotel.name} in ${hotel.city}`}
             className="group rounded-lg border border-border bg-card overflow-hidden transition-colors hover:border-foreground/30 focus-visible:outline-2 focus-visible:outline-offset-2 flex flex-col"
           >
             <div className="relative h-48 w-full bg-muted overflow-hidden">
               <Image
                 src={hotel.heroImage}
-                alt={`${hotel.name} preview`}
+                alt={`${hotel.name} - exterior hero preview`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform group-hover:scale-105"
