@@ -28,6 +28,17 @@ export function errorHandler(
   res: Response,
   _next: NextFunction
 ): void {
+  // Handle payload too large (e.g. from express.json limit)
+  if (typeof err === "object" && err !== null && "type" in err && err.type === "entity.too.large") {
+    res.status(413).json({
+      error: {
+        code: "PAYLOAD_TOO_LARGE",
+        message: "Request payload exceeds size limit of 10kb."
+      }
+    });
+    return;
+  }
+
   if (err instanceof AppError) {
     res.status(err.statusCode).json({
       error: {
@@ -42,7 +53,7 @@ export function errorHandler(
     res.status(400).json({
       error: {
         code: "VALIDATION_ERROR",
-        message: err.errors.map((e) => `${e.path.join(".")}: ${e.message}`).join(", ")
+        message: "Invalid enquiry request body."
       }
     });
     return;
