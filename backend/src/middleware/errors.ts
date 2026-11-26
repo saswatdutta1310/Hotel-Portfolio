@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { ZodError } from "zod";
+import { env } from "../config/env.js";
 
 export class AppError extends Error {
   public readonly statusCode: number;
@@ -59,7 +60,14 @@ export function errorHandler(
     return;
   }
 
-  const message = err instanceof Error ? err.message : "Internal Server Error";
+  // Generic internal server error: never expose stack traces or internal details in production
+  const isProd = env.NODE_ENV === "production";
+  const message = isProd
+    ? "Internal Server Error"
+    : err instanceof Error
+      ? err.message
+      : "Internal Server Error";
+
   res.status(500).json({
     error: {
       code: "INTERNAL_SERVER_ERROR",

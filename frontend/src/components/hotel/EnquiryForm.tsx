@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useId } from "react";
+import { useState, useRef, useId, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,6 +19,8 @@ interface EnquiryFormProps {
 
 type SubmissionState = "idle" | "submitting" | "success" | "error";
 
+const emptySubscribe = () => () => {};
+
 export function EnquiryForm({ hotelSlug }: EnquiryFormProps) {
   const [formData, setFormData] = useState<EnquiryFormInput>({
     hotelSlug,
@@ -35,6 +37,13 @@ export function EnquiryForm({ hotelSlug }: EnquiryFormProps) {
   const [errors, setErrors] = useState<EnquiryFormErrors>({});
   const [status, setStatus] = useState<SubmissionState>("idle");
   const [serverError, setServerError] = useState<string | null>(null);
+
+  // useSyncExternalStore safely reads client date without hydration mismatch or setState-in-effect
+  const minDate = useSyncExternalStore(
+    emptySubscribe,
+    () => new Date().toISOString().split("T")[0],
+    () => ""
+  );
 
   const baseId = useId();
   const nameRef = useRef<HTMLInputElement>(null);
@@ -59,8 +68,6 @@ export function EnquiryForm({ hotelSlug }: EnquiryFormProps) {
     message: messageRef,
   };
 
-  const today = new Date().toISOString().split("T")[0];
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -79,7 +86,8 @@ export function EnquiryForm({ hotelSlug }: EnquiryFormProps) {
     e.preventDefault();
     setServerError(null);
 
-    const validation = validateEnquiryForm(formData, today);
+    const todayStr = minDate || new Date().toISOString().split("T")[0];
+    const validation = validateEnquiryForm(formData, todayStr);
     if (!validation.isValid) {
       setErrors(validation.errors);
       if (validation.firstErrorField && fieldRefs[validation.firstErrorField]) {
@@ -99,7 +107,6 @@ export function EnquiryForm({ hotelSlug }: EnquiryFormProps) {
       // Mock mode: simulate short network delay and success
       await new Promise((resolve) => setTimeout(resolve, 600));
 
-      // Honeypot check in mock mode mirrors backend contract (returns success without processing)
       setStatus("success");
       setFormData({
         hotelSlug,
@@ -364,7 +371,7 @@ export function EnquiryForm({ hotelSlug }: EnquiryFormProps) {
               id={`${baseId}-checkIn`}
               name="checkIn"
               type="date"
-              min={today}
+              min={minDate}
               value={formData.checkIn}
               onChange={handleChange}
               aria-invalid={Boolean(errors.checkIn)}
@@ -391,7 +398,7 @@ export function EnquiryForm({ hotelSlug }: EnquiryFormProps) {
               id={`${baseId}-checkOut`}
               name="checkOut"
               type="date"
-              min={formData.checkIn || today}
+              min={formData.checkIn || minDate}
               value={formData.checkOut}
               onChange={handleChange}
               aria-invalid={Boolean(errors.checkOut)}

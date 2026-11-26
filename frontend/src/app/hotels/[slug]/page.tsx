@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { getHotel, getHotels } from "@/lib/api";
 import { Hero } from "@/components/hotel/Hero";
@@ -9,6 +10,8 @@ import { Rules } from "@/components/hotel/Rules";
 import { FaqSection } from "@/components/hotel/Faq";
 import { Gallery } from "@/components/hotel/Gallery";
 import { SectionNav } from "@/components/hotel/SectionNav";
+import { EnquiryForm } from "@/components/hotel/EnquiryForm";
+import { ContactBar } from "@/components/hotel/ContactBar";
 
 interface PageProps {
   params: Promise<{
@@ -75,8 +78,11 @@ export default async function HotelDetailPage({ params }: PageProps) {
     navItems.push({ id: "gallery", label: "Gallery" });
   }
 
+  // Enquiry is always available
+  navItems.push({ id: "enquiry", label: "Enquire" });
+
   return (
-    <article className="pb-20">
+    <article className="pb-28 md:pb-20">
       <Hero hotel={hotel} />
       <SectionNav items={navItems} />
 
@@ -104,7 +110,12 @@ export default async function HotelDetailPage({ params }: PageProps) {
         />
         <FaqSection faqs={hotel.faqs} />
         <Gallery gallery={hotel.gallery} />
+        <Suspense fallback={<div className="h-48 rounded-xl border border-border bg-card animate-pulse" />}>
+          <EnquiryForm hotelSlug={hotel.slug} />
+        </Suspense>
       </div>
+
+      <ContactBar contact={hotel.contact} hotelName={hotel.name} />
     </article>
   );
 }
