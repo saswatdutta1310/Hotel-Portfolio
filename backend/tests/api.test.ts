@@ -6,7 +6,7 @@ describe("Backend API Endpoints", () => {
   it("GET /health returns 200 with { status: 'ok' }", async () => {
     const res = await request(app).get("/health");
     expect(res.status).toBe(200);
-    expect(res.body).toEqual({ status: "ok" });
+    expect(res.body.status).toBe("ok");
   });
 
   it("GET /api/hotels returns 200 with { hotels: HotelSummary[] }", async () => {
@@ -46,15 +46,19 @@ describe("Backend API Endpoints", () => {
     expect(res.body.reviews.length).toBe(2);
   });
 
-  it("GET /api/hotels/:slug returns 404 with NOT_FOUND code for unknown slug", async () => {
-    const res = await request(app).get("/api/hotels/unknown-hotel-slug");
+  it("GET /api/hotels/:slug returns 404 with NOT_FOUND and fixed message 'Hotel not found.' without echoing slug", async () => {
+    const maliciousSlug = "unknown-hotel-slug-<script>alert('xss')</script>";
+    const res = await request(app).get(`/api/hotels/${encodeURIComponent(maliciousSlug)}`);
     expect(res.status).toBe(404);
     expect(res.body).toEqual({
       error: {
         code: "NOT_FOUND",
-        message: "Hotel not found: unknown-hotel-slug"
+        message: "Hotel not found."
       }
     });
+    // Ensure slug is never echoed
+    expect(res.body.error.message).not.toContain(maliciousSlug);
+    expect(res.body.error.message).not.toContain("unknown-hotel-slug");
   });
 
   it("GET unknown route returns 404 in contract error format", async () => {

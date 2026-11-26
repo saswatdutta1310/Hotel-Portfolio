@@ -25,7 +25,7 @@ enquiryRouter.post(
         const slug = String(req.body.hotelSlug).trim();
         const hotel = getHotel(slug);
         if (!hotel) {
-          throw new AppError(404, "NOT_FOUND", `Hotel not found: ${slug}`);
+          throw new AppError(404, "NOT_FOUND", "Hotel not found.");
         }
       }
 
@@ -34,7 +34,7 @@ enquiryRouter.post(
 
       const hotel = getHotel(enquiry.hotelSlug);
       if (!hotel) {
-        throw new AppError(404, "NOT_FOUND", `Hotel not found: ${enquiry.hotelSlug}`);
+        throw new AppError(404, "NOT_FOUND", "Hotel not found.");
       }
 
       // Honeypot check: if filled, return normal success response without sending email

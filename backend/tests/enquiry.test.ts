@@ -59,7 +59,8 @@ describe("POST /api/enquiry API", () => {
 
     expect(res.status).toBe(404);
     expect(res.body.error.code).toBe("NOT_FOUND");
-    expect(res.body.error.message).toContain("non-existent-hotel");
+    expect(res.body.error.message).toBe("Hotel not found.");
+    expect(res.body.error.message).not.toContain("non-existent-hotel");
   });
 
   it("honeypot returns success without sending email", async () => {
