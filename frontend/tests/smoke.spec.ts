@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test.describe("Frontend Smoke Tests", () => {
   test("home page loads and links to directory", async ({ page }) => {
     await page.goto("/");
-    await expect(page).toHaveTitle(/Hotel Portfolio/);
+    await expect(page).toHaveTitle(/Serene Boutique Hotels & Guest Houses/);
     await expect(
       page.getByRole("heading", { name: "Find your next serene stay" })
     ).toBeVisible();
@@ -150,5 +150,50 @@ test.describe("Frontend Smoke Tests", () => {
 
     const isHoneypotFocused = await honeypot.evaluate((el) => el === document.activeElement);
     expect(isHoneypotFocused).toBe(false);
+  });
+
+  test("SEO checks: title, canonical, JSON-LD parse, and robots.txt", async ({ page }) => {
+    await page.goto("/hotels/sample-hotel");
+
+    // Title verification
+    await expect(page).toHaveTitle(/The Grand Pine Hotel/);
+
+    // Canonical link tag (full URL constructed via metadataBase)
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute("href", /hotels\/sample-hotel$/);
+
+    // Structured data (JSON-LD) script tags
+    const jsonLdScripts = page.locator('script[type="application/ld+json"]');
+    const count = await jsonLdScripts.count();
+    expect(count).toBeGreaterThanOrEqual(2);
+
+    let foundHotel = false;
+    let foundBreadcrumbs = false;
+
+    for (let i = 0; i < count; i++) {
+      const content = await jsonLdScripts.nth(i).textContent();
+      expect(content).toBeTruthy();
+      const parsed = JSON.parse(content!);
+      if (parsed["@type"] === "Hotel") {
+        foundHotel = true;
+        expect(parsed.name).toBe("The Grand Pine Hotel");
+        expect(parsed.telephone).toBeUndefined(); // phone was "TODO"
+      }
+      if (parsed["@type"] === "BreadcrumbList") {
+        foundBreadcrumbs = true;
+        expect(parsed.itemListElement).toHaveLength(3);
+      }
+    }
+
+    expect(foundHotel).toBe(true);
+    expect(foundBreadcrumbs).toBe(true);
+
+    // Robots.txt verification
+    const robotsRes = await page.goto("/robots.txt");
+    expect(robotsRes?.status()).toBe(200);
+    const robotsText = await robotsRes?.text();
+    expect(robotsText).toContain("User-Agent: *");
+    expect(robotsText).toContain("Allow: /");
+    expect(robotsText).toContain("sitemap.xml");
   });
 });
